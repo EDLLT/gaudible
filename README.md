@@ -1,3 +1,6 @@
+> [!NOTE]
+> This was modified to support Marvin. It uses the magic sound from Amazing Marvin to notify you(feel free to change it)
+
 # gaudible
 
 > Single-file program that makes notifications audible for Gnome.
