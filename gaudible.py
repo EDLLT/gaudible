@@ -25,6 +25,8 @@ FILTERS = {
     'librewolf':       ('org.freedesktop.Notifications', 'Notify', 'LibreWolf'),
     'notify-send':     ('org.freedesktop.Notifications', 'Notify', 'notify-send'),
     'chrome':          ('org.freedesktop.Notifications', 'Notify', 'Google Chrome'),
+    'brave':           ('org.freedesktop.Notifications', 'Notify', 'Brave'),
+    'marvin':          ('org.freedesktop.Notifications', 'Notify', 'Marvin'),
 }
 
 GNOME_SETTINGS    = Gio.Settings(schema='org.gnome.desktop.notifications')

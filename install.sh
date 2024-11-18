@@ -9,8 +9,11 @@ SOUND_CALENDAR="${SOUND_CALENDAR:-$HOME/.local/share/sounds/__custom/uncategoriz
 cd "$(dirname $(realpath $0))"
 
 # Move the executable into place
-mkdir -p ~/bin
-cp gaudible.py ~/bin/gaudible
+sudo cp gaudible.py /usr/bin/gaudible
+
+# Copy sound into place
+sudo mkdir /usr/share/sounds/Marvin
+sudo cp marvin_notif.mp3 /usr/share/sounds/Marvin
 
 # CentOS 7 doesn't support systemctl --user
 if [[ "$(cat /etc/redhat-release)" =~ ^CentOS\ Linux\ release\ 7 ]]; then
@@ -18,7 +21,7 @@ if [[ "$(cat /etc/redhat-release)" =~ ^CentOS\ Linux\ release\ 7 ]]; then
 		[Desktop Entry]
 		Name=gaudible
 		Type=Application
-		Exec=$HOME/bin/gaudible -v --sound "calendar:$SOUND_CALENDAR" --sound "$SOUND_DEFAULT"
+		Exec=/usr/bin/gaudible -v --sound "marvin:/usr/share/sounds/Marvin/marvin_notif.mp3"
 		Hidden=false
 		NoDisplay=false
 		Terminal=false
@@ -31,7 +34,7 @@ fi
 mkdir -p ~/.config/systemd/user
 cat <<-EOT > ~/.config/systemd/user/gaudible.service
 	[Service]
-	ExecStart=$HOME/bin/gaudible -v --sound "calendar:$SOUND_CALENDAR" --sound "$SOUND_DEFAULT"
+	ExecStart=/usr/bin/gaudible -v --sound "marvin:/usr/share/sounds/Marvin/marvin_notif.mp3"
 	Restart=always
 	NoNewPrivileges=true
 
